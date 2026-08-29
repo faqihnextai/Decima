@@ -1,0 +1,421 @@
+/* =======================================================
+   1. GLOBAL / REUSABLE COMPONENTS & BUTTONS
+   ======================================================= */
+.btn-primary {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #ffffff !important;
+    padding: 0.8rem 1.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    border: var(--silhouette-border);
+    box-shadow: var(--iron-shadow-sm);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    box-shadow: var(--iron-shadow-md);
+    transform: translateY(-2px);
+}
+
+[data-bs-theme="dark"] .btn-primary {
+    color: #07090e !important;
+    background: var(--primary-color);
+    font-weight: 800;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
+}
+
+[data-bs-theme="dark"] .btn-primary:hover {
+    background: #60a5fa;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+.btn-hero-sm,
+.btn-sm-custom {
+    display: inline-block;
+    padding: 8px 22px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    text-decoration: none;
+    border: var(--silhouette-border);
+    box-shadow: var(--iron-shadow-sm);
+    transition: all 0.25s ease;
+}
+
+[data-bs-theme="dark"] .btn-hero-sm,
+[data-bs-theme="dark"] .btn-sm-custom {
+    color: #07090e !important;
+    background-color: var(--primary-color);
+}
+
+.btn-hero-sm:hover,
+.btn-sm-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--iron-shadow-md);
+}
+
+.hero-btn-wrap,
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+/* =======================================================
+   2. HERO SECTION
+   ======================================================= */
+.hero-section,
+#hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--bg-main);
+    overflow: hidden;
+}
+
+.hero-media-container {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.door-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.door-wrapper video,
+.door-wrapper .hero-slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.door-wrapper .hero-slide-img {
+    opacity: 0.85;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.hero-media-overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+    max-width: 720px;
+    padding: 1.5rem;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.hero-company {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    background: var(--card-bg);
+    padding: 6px 16px;
+    border-radius: 4px;
+    border: var(--silhouette-border);
+    box-shadow: var(--iron-shadow-sm);
+    margin-bottom: 12px;
+}
+
+[data-bs-theme="dark"] .hero-company {
+    color: var(--primary-color);
+    background: rgba(17, 22, 34, 0.85);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+.hero-media-overlay h1 {
+    font-size: clamp(1.6rem, 4.2vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1.25;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+[data-bs-theme="dark"] .hero-media-overlay h1 {
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+
+.hero-bottom-area {
+    position: relative;
+    z-index: 2;
+    background: var(--bg-main);
+    width: 100%;
+    padding: 1.5rem 1rem 2.5rem;
+    text-align: center;
+    border-top: var(--silhouette-border);
+}
+
+.hero-bottom-area .hero-desc {
+    max-width: 620px;
+    margin: 0 auto 1.2rem;
+    font-size: 0.98rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.hero-text {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-company { transition-delay: 0s; }
+.delay-title   { transition-delay: 0.15s; }
+.delay-desc    { transition-delay: 0.3s; }
+.delay-btn     { transition-delay: 0.45s; }
+
+/* =======================================================
+   3. ABOUT SECTION
+   ======================================================= */
+#about {
+    padding: 4.5rem 0;
+    background-color: var(--bg-alt) !important;
+}
+
+/* =======================================================
+   4. PRODUCT & PORTOFOLIO SECTION
+   ======================================================= */
+#product {
+    padding: 4.5rem 0;
+    background-color: var(--bg-main) !important;
+}
+
+#portofolio {
+    padding: 4.5rem 0;
+    background-color: var(--bg-alt) !important;
+}
+
+/* Styling Card Portofolio & Carousel (Product styling murni dari Product.css) */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+    margin-top: 2rem;
+}
+
+.portfolio-card,
+#portfolioNewsCarousel {
+    background-color: var(--card-bg) !important;
+    border: var(--silhouette-border) !important;
+    border-radius: 8px;
+    box-shadow: var(--iron-shadow-sm) !important;
+    color: var(--text-main) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.portfolio-card {
+    padding: 1.5rem;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--iron-shadow-md) !important;
+    border-color: var(--border-color) !important;
+}
+
+[data-bs-theme="dark"] .portfolio-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(56, 189, 248, 0.25) !important;
+}
+
+.portfolio-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* =======================================================
+   5. RECENT CLIENT SECTION
+   ======================================================= */
+#client {
+    padding: 4.5rem 0;
+    background-color: var(--bg-main) !important;
+}
+
+.client-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 2.5rem 0;
+}
+
+.client-marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 4.5rem;
+    width: max-content;
+    animation: clientScroll 30s linear infinite;
+}
+
+.client-marquee-wrapper:hover .client-marquee-track {
+    animation-play-state: paused;
+}
+
+.client-logo-item img {
+    height: 90px;
+    max-width: 230px;
+    width: auto;
+    object-fit: contain;
+    filter: none !important;
+    opacity: 1 !important;
+    transition: transform 0.25s ease;
+}
+
+.client-logo-item img:hover {
+    transform: scale(1.12);
+}
+
+@keyframes clientScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* =======================================================
+   6. CONTACT SECTION
+   ======================================================= */
+#contact {
+    padding: 4.5rem 0;
+    background-color: var(--bg-alt) !important;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 620px;
+    margin: 2rem auto 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.85rem 1.1rem;
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.92rem;
+    font-family: inherit;
+    width: 100%;
+    outline: none;
+    box-shadow: var(--iron-shadow-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+[data-bs-theme="dark"] .contact-form input:focus,
+[data-bs-theme="dark"] .contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.contact-form button[type="submit"] {
+    width: 100%;
+}
+
+/* =======================================================
+   7. RESPONSIVE MOBILE
+   ======================================================= */
+@media (max-width: 768px) {
+    .hero-section,
+    #hero {
+        min-height: calc(100vh - 75px);
+    }
+
+    .hero-media-container {
+        min-height: 55vh;
+    }
+
+    .hero-company {
+        font-size: 0.72rem;
+    }
+
+    .hero-media-overlay h1 {
+        font-size: 1.55rem;
+    }
+
+    .hero-bottom-area {
+        padding: 1rem 1rem 1.8rem;
+    }
+
+    #about,
+    #product,
+    #portofolio,
+    #client,
+    #contact {
+        padding: 3rem 0;
+    }
+
+    .client-marquee-wrapper {
+        overflow: visible !important;
+        padding: 1rem 0;
+    }
+
+    .client-marquee-track {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 1.25rem 0.75rem !important;
+        width: 100% !important;
+        animation: none !important;
+    }
+
+    .desktop-dup {
+        display: none !important;
+    }
+
+    .client-logo-item {
+        flex: 0 0 calc(25% - 0.75rem);
+        max-width: calc(25% - 0.75rem);
+    }
+
+    .client-logo-item img {
+        height: 42px !important;
+        max-width: 100% !important;
+        object-fit: contain;
+    }
+}

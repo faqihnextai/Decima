@@ -1,0 +1,129 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Raleway:wght@400;500;600;700&display=swap');
+
+/* =======================================================
+   1. PALET WARNA TEMA: IRON WHITE & IRON DARK SILHOUETTE
+   ======================================================= */
+:root {
+    /* --- LIGHT MODE: IRON WHITE SILHOUETTE --- */
+    --primary-color: #1e293b;         /* Cast iron dark slate */
+    --primary-hover: #0f172a;         /* Deep forged steel */
+    --primary-accent: #3b82f6;        /* Industrial blue spark */
+    
+    --bg-main: #f8fafc;               /* Platinum iron white */
+    --bg-alt: #f1f5f9;                /* Brushed metallic light */
+    
+    --text-main: #0f172a;             /* Pure carbon black text */
+    --text-muted: #64748b;            /* Cold iron mist */
+    
+    --card-bg: #ffffff;               /* Clean white silhouette */
+    --border-color: #cbd5e1;          /* Cold steel line */
+    --input-bg: #ffffff;
+    --navbar-bg: #ffffff;
+    
+    /* Iron Silhouette Shadow (Light) */
+    --iron-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+    --iron-shadow-md: 0 10px 25px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+    --iron-shadow-glow: 0 0 15px rgba(203, 213, 225, 0.8);
+    --silhouette-border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+[data-bs-theme="dark"] {
+    /* --- DARK MODE: IRON DARK BLACK SILHOUETTE SHADOW --- */
+    --primary-color: #38bdf8;         /* Cyan plasma weld spark */
+    --primary-hover: #60a5fa;         /* Vibrant blue metal */
+    --primary-accent: #38bdf8;
+    
+    --bg-main: #07090e;               /* Raw black iron core */
+    --bg-alt: #0d1117;                /* Dark gunmetal / carbon base */
+    
+    --text-main: #f1f5f9;             /* Bright brushed titanium */
+    --text-muted: #94a3b8;            /* Matte steel slate */
+    
+    --card-bg: #111622;               /* Hardened obsidian iron */
+    --border-color: #1e293b;          /* Dark welded seam line */
+    --input-bg: #0d1117;
+    --navbar-bg: #07090e;
+    
+    /* Iron Silhouette Shadow (Dark) */
+    --iron-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.6);
+    --iron-shadow-md: 0 12px 30px rgba(0, 0, 0, 0.75), 0 0 1px 1px rgba(255, 255, 255, 0.06);
+    --iron-shadow-glow: 0 0 20px rgba(56, 189, 248, 0.15);
+    --silhouette-border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* =======================================================
+   2. RESET & GLOBAL STYLING
+   ======================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif !important;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+h1, h2, h3, h4, h5, h6, .logo {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+}
+
+.container {
+    width: 100%;
+    padding: 0 1.25rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+section {
+    background-color: var(--bg-main);
+    transition: background-color 0.35s ease;
+}
+
+section:nth-of-type(even) {
+    background-color: var(--bg-alt);
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.section-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Tombol Toggle Tema Transparan */
+.theme-toggle-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2px;
+}
