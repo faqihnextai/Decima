@@ -129,3 +129,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+/**
+ * Mobile Scroll Detection (Hide Logo, Bubble, & Bottom Bar on Scroll Down, Show on Scroll Up)
+ */
+(function () {
+    let lastScrollPosition = 0;
+    let isTicking = false;
+    const scrollThreshold = 10;
+
+    function getScrollPosition() {
+        return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    }
+
+    function handleScrollUpdate() {
+        // Hanya eksekusi logika hide/show pada mode mobile (< 768px)
+        if (window.innerWidth >= 768) {
+            isTicking = false;
+            return;
+        }
+
+        const logo = document.getElementById('floatingBrandLogo');
+        const bubble = document.getElementById('mobileFloatingBubble');
+        const bottomBar = document.getElementById('mobileBottomBar');
+        const currentScroll = getScrollPosition();
+        const delta = currentScroll - lastScrollPosition;
+
+        // Cegah efek bounce overscroll di iOS/Safari
+        if (currentScroll < 0) {
+            isTicking = false;
+            return;
+        }
+
+        // Scroll Down -> Sembunyikan Logo, Bubble, dan Bottom Navbar
+        if (delta > scrollThreshold && currentScroll > 40) {
+            if (logo && !logo.classList.contains('is-hidden-scroll')) {
+                logo.classList.add('is-hidden-scroll');
+            }
+            if (bubble && !bubble.classList.contains('is-hidden-scroll')) {
+                bubble.classList.add('is-hidden-scroll');
+            }
+            if (bottomBar && !bottomBar.classList.contains('is-hidden-scroll')) {
+                bottomBar.classList.add('is-hidden-scroll');
+            }
+        }
+        // Scroll Up / Di puncak halaman -> Munculkan kembali semuanya
+        else if (delta < -scrollThreshold || currentScroll <= 15) {
+            if (logo && logo.classList.contains('is-hidden-scroll')) {
+                logo.classList.remove('is-hidden-scroll');
+            }
+            if (bubble && bubble.classList.contains('is-hidden-scroll')) {
+                bubble.classList.remove('is-hidden-scroll');
+            }
+            if (bottomBar && bottomBar.classList.contains('is-hidden-scroll')) {
+                bottomBar.classList.remove('is-hidden-scroll');
+            }
+        }
+
+        lastScrollPosition = currentScroll;
+        isTicking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!isTicking) {
+            window.requestAnimationFrame(handleScrollUpdate);
+            isTicking = true;
+        }
+    }, { passive: true });
+})();

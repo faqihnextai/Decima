@@ -196,6 +196,7 @@
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
     border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
     z-index: 1100;
+    transition: transform 0.35s ease, opacity 0.35s ease; /* Tambahkan baris transisi ini */
 }
 
 .mobile-bottom-nav {
@@ -418,7 +419,7 @@
         padding-bottom: 70px;
     }
 
-    /* Animasi sembunyi saat scroll down khusus mobile */
+/* Animasi sembunyi saat scroll down khusus mobile */
     .floating-brand-logo.is-hidden-scroll {
         transform: translateY(-80px) scale(0.9) !important;
         opacity: 0 !important;
@@ -430,4 +431,23 @@
         opacity: 0 !important;
         pointer-events: none !important;
     }
+    /* Navbar bawah meluncur turun keluar layar saat scroll down */
+    .mobile-bottom-bar.is-hidden-scroll {
+        transform: translateY(100%) !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+}
+
+/* Penyelarasan Ikon Nav Desktop */
+.nav-item-link,
+.desktop-product-btn {
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-item-link i,
+.desktop-product-btn i.bi-box-seam {
+    font-size: 1rem;
+    color: var(--primary-color);
 }

@@ -27,9 +27,10 @@ class App extends BaseConfig
         'localhost',
         '127.0.0.1',
         '192.168.1.10',
-        'tamela-hoary-sid.ngrok-free.dev',
+        'rmtrstv1-8080.asse.devtunnels.ms',
         'www.tamela-hoary-sid.ngrok-free.dev',
         'www.ciptasaranaprima.com',
+        '7a92-103-187-162-222.ngrok-free.app',
     ];
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

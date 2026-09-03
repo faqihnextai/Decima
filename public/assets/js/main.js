@@ -72,3 +72,93 @@ document.addEventListener('DOMContentLoaded', () => {
         reveals.forEach(el => el.classList.add('is-visible'));
     }
 });
+
+// ==========================================================================
+// LOGIKA PRODUK: SLIDER HOVER, SCROLL-AUTO-OPEN & HEADER CLICK
+// ==========================================================================
+
+// 1. Toggle manual jika header produk diklik
+function toggleProductSlider(headerEl) {
+    const productItem = headerEl.closest('.product-item');
+    if (productItem) {
+        productItem.classList.toggle('is-expanded');
+    }
+}
+
+// 2. Fungsi buka slider & scroll mulus ke target
+function expandAndScrollToProduct(targetId) {
+    if (!targetId || !targetId.includes('#prod-')) return;
+
+    // Ambil hash murni jika URL memuat path (misal: /#prod-xxx)
+    const cleanId = targetId.substring(targetId.indexOf('#'));
+    const targetEl = document.querySelector(cleanId);
+    
+    if (targetEl) {
+        // Offset tinggi navbar
+        const navOffset = 90;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+
+        // Buka slider otomatis
+        targetEl.classList.add('is-expanded');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const allProducts = document.querySelectorAll('.product-item');
+
+    // A. Interaksi HOVER di Desktop (Buka saat cursor masuk)
+    allProducts.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.classList.add('is-expanded');
+        });
+    });
+
+    // B. Interaksi SCROLL OTOMATIS (Saat di-scroll masuk layar, otomatis buka)
+    if ('IntersectionObserver' in window) {
+        const productScrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Terbuka otomatis saat 35% bagian produk terlihat di viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-expanded');
+                }
+            });
+        }, {
+            threshold: 0.35,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        allProducts.forEach(item => productScrollObserver.observe(item));
+    }
+
+    // C. Interaksi KLIK dari NAVBAR DESKTOP & MOBILE BOTTOM SHEET
+    const productLinks = document.querySelectorAll('a[href*="#prod-"]');
+    productLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href && href.includes('#prod-')) {
+                e.preventDefault(); // Cegah loncat instan browser
+                expandAndScrollToProduct(href);
+
+                // Update hash di URL tanpa reload
+                const cleanId = href.substring(href.indexOf('#'));
+                history.pushState(null, null, cleanId);
+            }
+        });
+    });
+
+// D. Tangani jika user membuka web dengan Hash URL langsung (Direct Link atau tombol Back)
+    if (window.location.hash && window.location.hash.startsWith('#prod-')) {
+        // Beri jeda lebih lama agar semua aset (gambar, CSS) selesai dimuat sebelum menggulir
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                expandAndScrollToProduct(window.location.hash);
+            }, 600); // 600 milidetik memberikan waktu agar layout stabil
+        });
+    }
+});

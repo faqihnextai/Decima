@@ -70,17 +70,17 @@
 
 <!-- 4. BOTTOM NAVIGATION BAR (Khusus Mobile di Dasar Layar) -->
 <nav class="mobile-bottom-bar" id="mobileBottomBar">
-    <a href="<?= base_url('/#contact') ?>" class="mobile-bottom-nav" onclick="setActiveNav(this)">
-        <i class="bi bi-envelope"></i>
-        <span><?= function_exists('t') ? t('Nav.contact') : 'Kontak' ?></span>
-    </a>
     <a href="<?= base_url('/#about') ?>" class="mobile-bottom-nav" onclick="setActiveNav(this)">
-        <i class="bi bi-house-door"></i>
+        <i class="bi bi-info-circle"></i>
         <span><?= function_exists('t') ? t('Nav.about') : 'Tentang Kami' ?></span>
     </a>
     <a href="javascript:void(0)" class="mobile-bottom-nav" onclick="openMobileProductSheet(this)">
         <i class="bi bi-box-seam"></i>
         <span><?= function_exists('t') ? t('Nav.product') : 'Produk' ?></span>
+    </a>
+    <a href="<?= base_url('/#contact') ?>" class="mobile-bottom-nav" onclick="setActiveNav(this)">
+        <i class="bi bi-envelope"></i>
+        <span><?= function_exists('t') ? t('Nav.contact') : 'Kontak' ?></span>
     </a>
 </nav>
 

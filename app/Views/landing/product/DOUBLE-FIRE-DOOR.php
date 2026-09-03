@@ -7,24 +7,41 @@
     </div>
     <div class="product-detail">
         <span class="product-index">02</span>
-        <h3 class="product-title"><?= t('Product.dfd_title') ?></h3>
-        <p class="product-lead"><?= t('Product.dfd_lead') ?></p>
-        <div class="spec-list">
-            <div class="spec-row">
-                <span class="spec-label"><?= t('Product.dfd_spec_1_lbl') ?></span>
-                <span class="spec-val"><?= t('Product.dfd_spec_1_val') ?></span>
-            </div>
-            <div class="spec-row">
-                <span class="spec-label"><?= t('Product.dfd_spec_2_lbl') ?></span>
-                <span class="spec-val"><?= t('Product.dfd_spec_2_val') ?></span>
-            </div>
-            <div class="spec-row">
-                <span class="spec-label"><?= t('Product.dfd_spec_3_lbl') ?></span>
-                <span class="spec-val"><?= t('Product.dfd_spec_3_val') ?></span>
-            </div>
+        <div class="product-header-toggle" onclick="toggleProductSlider(this)">
+            <h3 class="product-title"><?= t('Product.dfd_title') ?></h3>
+            <span class="toggle-indicator"><i class="bi bi-chevron-down"></i></span>
         </div>
-        <div class="product-action">
-            <a href="#contact" class="btn-product"><?= t('Product.btn_consult') ?></a>
+        <p class="product-lead"><?= t('Product.dfd_lead') ?></p>
+        
+        <div class="product-slider-content">
+            <div class="hook-box">
+                <div class="hook-point hook-punch">
+                    <span class="hook-icon">⚡</span>
+                    <div class="hook-content">
+                        <strong class="hook-label"><?= t('Product.lbl_hook') ?></strong>
+                        <p class="hook-text"><?= t('Product.dfd_hook') ?></p>
+                    </div>
+                </div>
+                <div class="hook-point hook-industry">
+                    <span class="hook-icon">🏢</span>
+                    <div class="hook-content">
+                        <strong class="hook-label"><?= t('Product.lbl_industry') ?></strong>
+                        <p class="hook-text"><?= t('Product.dfd_industry') ?></p>
+                    </div>
+                </div>
+                <div class="hook-point hook-material">
+                    <span class="hook-icon">🛡️</span>
+                    <div class="hook-content">
+                        <strong class="hook-label"><?= t('Product.lbl_material') ?></strong>
+                        <p class="hook-text"><?= t('Product.dfd_material') ?></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-action-group">
+                <a href="<?= base_url('product/double-fire-door') ?>" class="btn-product-detail"><?= t('Product.btn_detail') ?> &rarr;</a>
+                <a href="#contact" class="btn-product-consult"><?= t('Product.btn_consult') ?></a>
+            </div>
         </div>
     </div>
 </div>

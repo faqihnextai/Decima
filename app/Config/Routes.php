@@ -19,6 +19,10 @@ $routes->get('login', 'AuthController::login');
 $routes->post('login/auth', 'AuthController::auth');
 $routes->get('logout', 'AuthController::logout');
 
+//detailsproduct
+// Route Halaman Detail Statis Produk (SEO URL)
+$routes->get('product/(:segment)', 'ProductController::detail/$1');
+
 // Admin CRUD Portfolio
 $routes->group('admin', function($routes) {
     $routes->get('portfolio', 'AdminPortfolioController::index');

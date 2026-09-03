@@ -1,0 +1,225 @@
+[
+  {
+    "id": "single-fire-door",
+    "slug": "single-fire-door",
+    "title": "Single Fire Door",
+    "title_en": "Single Fire Door",
+    "lead": "Pintu kebakaran tunggal tahan api yang dirancang presisi untuk proteksi evakuasi darurat gedung.",
+    "lead_en": "Single leaf fire-rated emergency exit door designed for building evacuation and compartmentalization.",
+    "door_frame": "Made of steel sheet plate (Hot Rolled Steel Sheet). Size 120 x 70 x 50 mm, thickness 2.0 mm C channel.",
+    "door_leaf": "Made of 1.5 mm plate (Hot Rolled Steel Sheet), with overlap of 24 mm width around the door leaf. Insulation Rockwool/Mineral wool with density 100 kg/m³ and door thickness of 55 mm.",
+    "optional": "Vision panel with wire glass thk. 6.8 mm.",
+    "finishing": "Steel parts treated by phosphating as rust prevention and then painted with Primary Coat.",
+    "images": {
+      "main": "assets/img/product/single-fire-door.jpg",
+      "blueprints": [
+        "assets/img/product/blueprints/sfd-bp-1.jpg",
+        "assets/img/product/blueprints/sfd-bp-2.jpg",
+        "assets/img/product/blueprints/sfd-bp-3.jpg",
+        "assets/img/product/blueprints/sfd-bp-4.jpg",
+        "assets/img/product/blueprints/sfd-bp-5.jpg",
+        "assets/img/product/blueprints/sfd-bp-6.jpg"
+      ],
+      "configurations": {
+        "F": "assets/img/product/config/f.jpg",
+        "V": "assets/img/product/config/v.jpg",
+        "NS": "assets/img/product/config/ns.jpg",
+        "NT": "assets/img/product/config/nt.jpg"
+      }
+    }
+  },
+  {
+    "id": "double-fire-door",
+    "slug": "double-fire-door",
+    "title": "Double Fire Door",
+    "title_en": "Double Fire Door",
+    "lead": "Pintu kebakaran ganda dengan konstruksi astragal pengaman untuk akses koridor dan jalur evakuasi lebar.",
+    "lead_en": "Double leaf fire protection door equipped with sealing astragal for wide escape routes and high-traffic corridors.",
+    "door_frame": "Made of steel sheet plate (Hot Rolled Steel Sheet). Size 120 x 70 x 50 mm, thickness 2.0 mm C channel.",
+    "door_leaf": "Made of 1.5 mm plate (Hot Rolled Steel Sheet), with overlap of 24 mm width around the door leaf. Insulation Rockwool/Mineral wool with density 100 kg/m³ and door thickness of 55 mm. Double door construction using astragal and made of steel plate.",
+    "optional": "Vision panel with wire glass thk. 6.8 mm.",
+    "finishing": "Steel parts treated by phosphating as rust prevention and then painted with Primary Coat.",
+    "images": {
+      "main": "assets/img/product/double-fire-door.jpg",
+      "blueprints": [
+        "assets/img/product/blueprints/dfd-bp-1.jpg",
+        "assets/img/product/blueprints/dfd-bp-2.jpg",
+        "assets/img/product/blueprints/dfd-bp-3.jpg",
+        "assets/img/product/blueprints/dfd-bp-4.jpg",
+        "assets/img/product/blueprints/dfd-bp-5.jpg",
+        "assets/img/product/blueprints/dfd-bp-6.jpg"
+      ],
+      "configurations": {
+        "F": "assets/img/product/config/f.jpg",
+        "V": "assets/img/product/config/v.jpg",
+        "NS": "assets/img/product/config/ns.jpg",
+        "NT": "assets/img/product/config/nt.jpg"
+      }
+    }
+  },
+  {
+    "id": "steel-single-door",
+    "slug": "steel-single-door",
+    "title": "Steel Single Door (Standard)",
+    "title_en": "Steel Single Door (Standard)",
+    "lead": "Pintu baja tunggal berprofil kokoh untuk ruang utilitas operasional dan perlindungan fasilitas heavy-duty.",
+    "lead_en": "Standard robust single steel door for industrial utility rooms and heavy-duty operational access.",
+    "door_frame": "Made of steel sheet plate (Hot Rolled Steel Sheet). Size 120 x 70 x 50 mm, thickness 2.0 mm C channel.",
+    "door_leaf": "Made of 1.2 mm plate (Hot Rolled Steel Sheet), with overlap of 24 mm width around the door leaf. Door leaf thickness is 45 mm.",
+    "optional": "Vision panel with Clear glass thk. 6.0 mm. Grille/Louver made of steel plate 1.5 mm thickness.",
+    "finishing": "Steel parts treated by phosphating as rust prevention and then painted with Primary Coat.",
+    "images": {
+      "main": "assets/img/product/steel-single-door.jpg",
+      "blueprints": [
+        "assets/img/product/blueprints/ssd-bp-1.jpg",
+        "assets/img/product/blueprints/ssd-bp-2.jpg",
+        "assets/img/product/blueprints/ssd-bp-3.jpg",
+        "assets/img/product/blueprints/ssd-bp-4.jpg",
+        "assets/img/product/blueprints/ssd-bp-5.jpg",
+        "assets/img/product/blueprints/ssd-bp-6.jpg"
+      ],
+      "configurations": {
+        "FL": "assets/img/product/config/fl.jpg",
+        "BL": "assets/img/product/config/bl.jpg",
+        "V": "assets/img/product/config/v.jpg",
+        "NS": "assets/img/product/config/ns.jpg",
+        "NT": "assets/img/product/config/nt.jpg",
+        "NH": "assets/img/product/config/nh.jpg"
+      }
+    }
+  },
+  {
+    "id": "steel-airtight-door",
+    "slug": "steel-airtight-door",
+    "title": "Steel Airtight & Acoustic Door",
+    "title_en": "Steel Airtight & Acoustic Door",
+    "lead": "Pintu rekayasa khusus dengan segel karet neoprene untuk kekedapan udara dan isolasi suara hingga 30 dB (STC=30).",
+    "lead_en": "Specially engineered door featuring neoprene rubber seals for maximum airtightness and acoustic dampening up to 30 dB (STC=30).",
+    "door_frame": "Made of steel sheet plate (Hot Rolled Steel Sheet). Size 120 x 70 x 50 mm, thickness 2.0 mm C channel. The door frame is equipped with neoprene rubber.",
+    "door_leaf": "Made of 1.5 mm plate (Hot Rolled Steel Sheet), with overlap of 24 mm width around the door leaf. Door leaf thickness is 55 mm (Rockwool density 100 kg/m³ & mineral acoustic). Double door construction using astragal and made of steel plate. Acoustic Steel door can reduce sound up to 30 dB (STC=30).",
+    "optional": "Vision panel with Clear glass thk. 6.0 mm.",
+    "finishing": "Steel parts treated by phosphating as rust prevention and then painted with Primary Coat.",
+    "images": {
+      "main": "assets/img/product/steel-airtight-door.jpg",
+      "blueprints": [
+        "assets/img/product/blueprints/sad-bp-1.jpg",
+        "assets/img/product/blueprints/sad-bp-2.jpg",
+        "assets/img/product/blueprints/sad-bp-3.jpg",
+        "assets/img/product/blueprints/sad-bp-4.jpg",
+        "assets/img/product/blueprints/sad-bp-5.jpg",
+        "assets/img/product/blueprints/sad-bp-6.jpg"
+      ],
+      "configurations": {
+        "F": "assets/img/product/config/f.jpg",
+        "V": "assets/img/product/config/v.jpg",
+        "NS": "assets/img/product/config/ns.jpg",
+        "NH": "assets/img/product/config/nh.jpg"
+      }
+    }
+  },
+  {
+    "id": "steel-blast-door",
+    "slug": "steel-blast-door",
+    "title": "Steel Blast Door",
+    "title_en": "Steel Blast Door",
+    "lead": "Pertahanan tingkat ekstrem. Dibangun dari plat masif 6.0 mm untuk menahan gelombang kejut dan tekanan ledakan berbahaya.",
+    "lead_en": "Extreme-level defense. Constructed from solid 6.0 mm steel plating to withstand severe shockwaves and explosive blast overpressure.",
+    "door_frame": "Made of steel sheet, outer size 150 x 70 x (2.0+3.0) mm.",
+    "door_leaf": "Made of steel sheet 6.0 mm. Door leaf thickness is 55 mm.",
+    "optional": "Heavy-duty blast hinge & high-security locking hardware (standard blast accessories).",
+    "finishing": "Rust-preventive treated & industrial protective primary coat finish.",
+    "images": {
+      "main": "assets/img/product/steel-blast-door.jpg",
+      "blueprints": [
+        "assets/img/product/blueprints/sbd-bp-1.jpg",
+        "assets/img/product/blueprints/sbd-bp-2.jpg",
+        "assets/img/product/blueprints/sbd-bp-3.jpg",
+        "assets/img/product/blueprints/sbd-bp-4.jpg",
+        "assets/img/product/blueprints/sbd-bp-5.jpg",
+        "assets/img/product/blueprints/sbd-bp-6.jpg"
+      ],
+      "configurations": {
+        "F": "assets/img/product/config/f.jpg"
+      }
+    }
+  },
+  {
+    "id": "steel-louver-door",
+    "slug": "steel-louver-door",
+    "title": "Steel Louver Door",
+    "title_en": "Steel Louver Door",
+    "lead": "Sistem pintu berventilasi dengan kisi-kisi baja untuk sirkulasi udara optimal pada area gardu listrik dan mesin.",
+    "lead_en": "Ventilated steel door system with stationary louvers for optimal air circulation in substations and mechanical rooms.",
+    "door_frame": "Made of steel sheet plate (Hot Rolled Steel Sheet). Size 100 x 50 mm, thickness 2.0 mm C channel.",
+    "door_leaf": "Blade of Louver: Made of 1.5 mm plate (Hot Rolled Steel Sheet).",
+    "optional": "Insect screen / wire mesh backing.",
+    "finishing": "Steel parts treated by phosphating as rust prevention and then painted with Primary Coat.",
+    "images": {
+      "main": "assets/img/product/steel-louver-door.jpg",
+      "blueprints": [
+        "assets/img/product/blueprints/sld-bp-1.jpg",
+        "assets/img/product/blueprints/sld-bp-2.jpg",
+        "assets/img/product/blueprints/sld-bp-3.jpg",
+        "assets/img/product/blueprints/sld-bp-4.jpg",
+        "assets/img/product/blueprints/sld-bp-5.jpg",
+        "assets/img/product/blueprints/sld-bp-6.jpg"
+      ],
+      "configurations": {
+        "FL": "assets/img/product/config/fl.jpg"
+      }
+    }
+  },
+  {
+    "id": "steel-radiation-door",
+    "slug": "steel-radiation-door",
+    "title": "Steel Radiation Door",
+    "title_en": "Steel Radiation Door",
+    "lead": "Perisai andal melawan sinar radiasi berbahaya. Dirancang menggunakan lapisan timbal (Pb) murni untuk instalasi fasilitas medis dan nuklir.",
+    "lead_en": "Reliable shield against harmful radiation. Engineered with pure lead (Pb) lining for medical and nuclear facility installations.",
+    "door_frame": "Made of steel sheet, outer size 150 x 70 x 2.0 mm coated by lead (Pb) 2-6 mm.",
+    "door_leaf": "Made of steel sheet 1.5 mm, door thickness 55 mm. Doors should be rebated door, equipped with overlap 24 mm width around the door leaf. Internal lead (Pb) lining 2-6 mm for radiation shielding.",
+    "optional": "Radiation shielding lead glass vision panel (Pb equivalent).",
+    "finishing": "Phosphating rust prevention and painted with Primary Coat.",
+    "images": {
+      "main": "assets/img/product/steel-radiation-door.jpg",
+      "blueprints": [
+        "assets/img/product/blueprints/srd-bp-1.jpg",
+        "assets/img/product/blueprints/srd-bp-2.jpg",
+        "assets/img/product/blueprints/srd-bp-3.jpg",
+        "assets/img/product/blueprints/srd-bp-4.jpg",
+        "assets/img/product/blueprints/srd-bp-5.jpg",
+        "assets/img/product/blueprints/srd-bp-6.jpg"
+      ],
+      "configurations": {
+        "F": "assets/img/product/config/f.jpg",
+        "V": "assets/img/product/config/v.jpg"
+      }
+    }
+  },
+  {
+    "id": "steel-shaft-door",
+    "slug": "steel-shaft-door",
+    "title": "Steel Shaft Door",
+    "title_en": "Steel Shaft Door",
+    "lead": "Panel akses utilitas cerdas untuk instalasi ducting gedung bertingkat, mengamankan jalur pipa mekanikal dan kabel kelistrikan.",
+    "lead_en": "Smart utility access panel designed for high-rise building ducts, securing mechanical piping and electrical cabling runs.",
+    "door_frame": "Made of steel sheet plate (Hot Rolled Steel Sheet). Size 100 x 50 x 35 mm, thickness 2.0 mm C channel.",
+    "door_leaf": "Made of 1.2 mm plate (Hot Rolled Steel Sheet). Door leaf thickness is 40 mm. Double door construction using astragal and made of steel plate (fitted with cup handle & security bolt).",
+    "optional": "Custom master key / cylinder lock, access panel locks.",
+    "finishing": "Steel parts treated by phosphating as rust prevention and then painted with Primary Coat.",
+    "images": {
+      "main": "assets/img/product/steel-shaft-door.jpg",
+      "blueprints": [
+        "assets/img/product/blueprints/ssh-bp-1.jpg",
+        "assets/img/product/blueprints/ssh-bp-2.jpg",
+        "assets/img/product/blueprints/ssh-bp-3.jpg",
+        "assets/img/product/blueprints/ssh-bp-4.jpg",
+        "assets/img/product/blueprints/ssh-bp-5.jpg",
+        "assets/img/product/blueprints/ssh-bp-6.jpg"
+      ],
+      "configurations": {
+        "F": "assets/img/product/config/f.jpg"
+      }
+    }
+  }
+]
