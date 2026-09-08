@@ -94,7 +94,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. PERFECT FIT DOOR MEDIA BOX (NO GAPS / NO CROPPING DISTORTION)
+   3. PERFECT FIT DOOR MEDIA BOX (ASPECT RATIO 1:2 TRANSPARAN)
    -------------------------------------------------------------------------- */
 .product-media {
     display: flex;
@@ -102,50 +102,63 @@
     align-items: center;
     width: 100%;
     position: relative;
+    z-index: 2; /* Agar saat zoom gambar tidak tertutup elemen zigzag lain */
 }
 
 .door-frame-box {
     position: relative;
     width: 100%;
-    max-width: 340px;
-    height: 480px;
-    background-color: var(--bg-alt);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    overflow: hidden;
+    max-width: 320px;
+    aspect-ratio: 1 / 2;
+    height: auto;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible; /* Wajib visible agar gambar 1.5x tidak terpotong */
     display: flex;
-    align-items: stretch;
-    justify-content: stretch;
-    padding: 0;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.4s ease,
-                box-shadow 0.4s ease;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Indikator bisa di-klik untuk full view */
 }
 
 .door-frame-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     display: block;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center center;
+    /* Default: Shadow hitam soft mengikuti bentuk pintu (Light Mode) */
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.22));
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                filter 0.4s ease;
 }
 
-.product-item:hover .door-frame-box {
-    border-color: var(--primary-color);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+/* Shadow untuk Dark Mode */
+[data-bs-theme="dark"] .door-frame-box img {
+    filter: drop-shadow(0 10px 26px rgba(255, 255, 255, 0.18));
 }
 
-.product-item:hover .door-frame-box img {
-    transform: scale(1.035);
+/* Hover: Zoom 1.5x & Shadow Lebih Kuat */
+.door-frame-box:hover {
+    z-index: 10;
 }
 
-/* Minimalist Badge */
+.door-frame-box:hover img {
+    transform: scale(1.5);
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.35));
+}
+
+[data-bs-theme="dark"] .door-frame-box:hover img {
+    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.32));
+}
+
+/* Badge pintu */
 .product-badge {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 0.5rem;
+    left: 0.5rem;
     background: var(--primary-color);
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
@@ -153,11 +166,17 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.75px;
-    padding: 0.38rem 0.85rem;
+    padding: 0.35rem 0.75rem;
     border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     z-index: 5;
     pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Sembunyikan badge sejenak saat gambar di-zoom agar tidak mengganggu detail pintu */
+.door-frame-box:hover .product-badge {
+    opacity: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -352,16 +371,15 @@
     }
 
     /* Container Frame Pintu Mobile Pas Presisi */
-    .door-frame-box {
+.door-frame-box {
         width: 100%;
-        max-width: 100%;
-        height: 290px;
-        border-radius: 6px;
+        max-width: 180px; /* Batas lebar pas di layar HP */
+        height: auto; /* Tetap ikuti aspect-ratio 1 / 2 */
+        aspect-ratio: 1 / 2;
     }
 
     .door-frame-box img {
-        object-fit: cover;
-        object-position: center center;
+        object-fit: contain;
     }
 
     .product-badge {
@@ -623,8 +641,107 @@
     transform: translateY(-2px);
 }
 
+/* ==========================================================================
+   12. SMOOTH FULLSCREEN IMAGE MODAL
+   ========================================================================== */
+.door-lightbox {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    cursor: zoom-out;
+    padding: 1.5rem;
+}
+
+.door-lightbox.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.door-lightbox img {
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    transform: scale(0.85);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.5));
+}
+
+[data-bs-theme="dark"] .door-lightbox img {
+    filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.2));
+}
+
+.door-lightbox.is-active img {
+    transform: scale(1);
+}
+
+.door-lightbox-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: #ffffff;
+    font-size: 2rem;
+    line-height: 1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.door-lightbox-close:hover {
+    opacity: 1;
+}
+
 /* Responsif Layar Kecil / Mobile */
 @media (max-width: 768px) {
+    /* --- LOGIKA GAMBAR PINTU DI MOBILE --- */
+    .door-frame-box {
+        max-width: 170px; /* Lebar pas proporsional untuk 2 kolom zigzag HP */
+        aspect-ratio: 1 / 2;
+        height: auto;
+    }
+
+    .door-frame-box img {
+        object-fit: contain;
+        /* Shadow disesuaikan lebih tipis agar tidak kotor di layar kecil */
+        filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+    }
+
+    [data-bs-theme="dark"] .door-frame-box img {
+        filter: drop-shadow(0 4px 14px rgba(255, 255, 255, 0.14));
+    }
+
+    /* Matikan zoom hover di HP agar tidak nabrak/merusak layout zigzag */
+    .door-frame-box:hover img {
+        transform: none !important;
+    }
+
+    .door-frame-box:hover .product-badge {
+        opacity: 1 !important; /* Badge tetap terbaca di HP */
+    }
+
+    /* Modal Fullscreen saat dibuka di HP */
+    .door-lightbox {
+        padding: 1rem;
+    }
+
+    .door-lightbox img {
+        max-width: 95vw;
+        max-height: 80vh;
+    }
+
+    /* --- KODE LAINNYA TETAP SEPERTI SEBELUMNYA --- */
     .hook-box {
         padding: 1rem;
         gap: 0.75rem;
@@ -635,7 +752,7 @@
     }
 
     .hook-text {
-        font-size: 0.88rem; /* ~14px */
+        font-size: 0.88rem;
     }
 
     .product-action-group {

@@ -14,10 +14,14 @@ $routes->get('(id|en)', 'LandingPage::index/$1');
 // Route Halaman Detail Statis Portofolio (SEO URL)
 $routes->get('portofolio/(:segment)', 'PortfolioController::detail/$1');
 
+//Route post email
+$routes->post('contact/send', 'ContactController::send');
+
 // Auth Admin
 $routes->get('login', 'AuthController::login');
 $routes->post('login/auth', 'AuthController::auth');
 $routes->get('logout', 'AuthController::logout');
+
 
 //detailsproduct
 // Route Halaman Detail Statis Produk (SEO URL)

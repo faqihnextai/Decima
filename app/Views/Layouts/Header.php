@@ -67,7 +67,7 @@
         <span class="theme-icon">🌙</span>
     </button>
 </div>
-
+<?= $this->include('component/bubble-download-catalog') ?>
 <!-- 4. BOTTOM NAVIGATION BAR (Khusus Mobile di Dasar Layar) -->
 <nav class="mobile-bottom-bar" id="mobileBottomBar">
     <a href="<?= base_url('/#about') ?>" class="mobile-bottom-nav" onclick="setActiveNav(this)">

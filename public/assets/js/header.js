@@ -39,68 +39,7 @@ document.addEventListener('click', function (e) {
 });
 
 /**
- * Mobile Scroll Detection (Hide Logo & Bubble on Scroll Down, Show on Scroll Up)
- */
-(function () {
-    let lastScrollPosition = 0;
-    let isTicking = false;
-    const scrollThreshold = 10;
-
-    function getScrollPosition() {
-        return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    }
-
-    function handleScrollUpdate() {
-        // Hanya eksekusi logika hide/show pada mode mobile (< 768px)
-        if (window.innerWidth >= 768) {
-            isTicking = false;
-            return;
-        }
-
-        const logo = document.getElementById('floatingBrandLogo');
-        const bubble = document.getElementById('mobileFloatingBubble');
-        const currentScroll = getScrollPosition();
-        const delta = currentScroll - lastScrollPosition;
-
-        // Cegah efek bounce overscroll di iOS/Safari
-        if (currentScroll < 0) {
-            isTicking = false;
-            return;
-        }
-
-        // Scroll Down -> Sembunyikan Logo & Bubble
-        if (delta > scrollThreshold && currentScroll > 40) {
-            if (logo && !logo.classList.contains('is-hidden-scroll')) {
-                logo.classList.add('is-hidden-scroll');
-            }
-            if (bubble && !bubble.classList.contains('is-hidden-scroll')) {
-                bubble.classList.add('is-hidden-scroll');
-            }
-        }
-        // Scroll Up / Di puncak halaman -> Munculkan kembali
-        else if (delta < -scrollThreshold || currentScroll <= 15) {
-            if (logo && logo.classList.contains('is-hidden-scroll')) {
-                logo.classList.remove('is-hidden-scroll');
-            }
-            if (bubble && bubble.classList.contains('is-hidden-scroll')) {
-                bubble.classList.remove('is-hidden-scroll');
-            }
-        }
-
-        lastScrollPosition = currentScroll;
-        isTicking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!isTicking) {
-            window.requestAnimationFrame(handleScrollUpdate);
-            isTicking = true;
-        }
-    }, { passive: true });
-})();
-
-/**
- * Product Detail Click & Scroll Trigger Handler
+ * Product Navigation Handler (Lintas Halaman & Single Page)
  */
 document.addEventListener('DOMContentLoaded', () => {
     const productLinks = document.querySelectorAll('.mobile-sheet-body a, .desktop-dropdown-menu a');
@@ -108,27 +47,48 @@ document.addEventListener('DOMContentLoaded', () => {
     productLinks.forEach((link) => {
         link.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (!href || !href.includes('#')) return;
+            if (!href) return;
 
-            const targetId = href.substring(href.indexOf('#') + 1);
+            // Ambil nama hash ID (misal: prod-single-fire-door)
+            const hashIndex = href.indexOf('#');
+            if (hashIndex === -1) return;
+
+            const targetId = href.substring(hashIndex + 1);
             const targetEl = document.getElementById(targetId);
 
+            // 1. KONDISI DI LANDING PAGE (Elemen ditemukan langsung di DOM)
             if (targetEl) {
                 e.preventDefault();
                 window.closeMobileProductSheet();
 
-                // Smooth scroll ke target elemen produk
+                // Tutup dropdown desktop jika sedang terbuka
+                document.querySelectorAll('.dropdown-product-wrapper.active').forEach((w) => {
+                    w.classList.remove('active');
+                });
+
+                // Scroll ke produk
                 targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-                // Buka otomatis jika target menggunakan collapse / accordion / tab / modal bootstrap
-                const interactiveTrigger = targetEl.querySelector('[data-bs-toggle], .btn-detail, .accordion-button');
-                if (interactiveTrigger) {
-                    interactiveTrigger.click();
+                // Buka accordion/slider produknya
+                if (typeof expandAndScrollToProduct === 'function') {
+                    expandAndScrollToProduct('#' + targetId);
                 }
+            } 
+            // 2. KONDISI DI DETAIL PRODUCT / HALAMAN LAIN (Elemen tidak ada)
+            else {
+                e.preventDefault(); // Cegah hanya sekadar nempel hash di URL saat ini
+                window.closeMobileProductSheet();
+
+                // Bersihkan URL tujuan agar dipaksa lari ke root domain + hash
+                // Contoh: http://localhost:8080/#prod-double-fire-door
+                const origin = window.location.origin;
+                window.location.href = origin + '/#' + targetId;
             }
         });
     });
 });
+
+
 
 /**
  * Mobile Scroll Detection (Hide Logo, Bubble, & Bottom Bar on Scroll Down, Show on Scroll Up)
@@ -143,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleScrollUpdate() {
-        // Hanya eksekusi logika hide/show pada mode mobile (< 768px)
         if (window.innerWidth >= 768) {
             isTicking = false;
             return;
@@ -155,13 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentScroll = getScrollPosition();
         const delta = currentScroll - lastScrollPosition;
 
-        // Cegah efek bounce overscroll di iOS/Safari
         if (currentScroll < 0) {
             isTicking = false;
             return;
         }
 
-        // Scroll Down -> Sembunyikan Logo, Bubble, dan Bottom Navbar
+        // Scroll Down -> Sembunyikan Logo, Bubble, dan Bottom Bar
         if (delta > scrollThreshold && currentScroll > 40) {
             if (logo && !logo.classList.contains('is-hidden-scroll')) {
                 logo.classList.add('is-hidden-scroll');
@@ -173,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 bottomBar.classList.add('is-hidden-scroll');
             }
         }
-        // Scroll Up / Di puncak halaman -> Munculkan kembali semuanya
+        // Scroll Up / Di puncak -> Tampilkan kembali
         else if (delta < -scrollThreshold || currentScroll <= 15) {
             if (logo && logo.classList.contains('is-hidden-scroll')) {
                 logo.classList.remove('is-hidden-scroll');

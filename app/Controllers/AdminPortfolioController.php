@@ -73,35 +73,40 @@ class AdminPortfolioController extends Controller
 
         $portfolios = $this->getPortfolios();
 
-        if ($id) {
-            // Mode Edit
-            foreach ($portfolios as &$item) {
-                if ($item['id'] == $id) {
-                    $item['title']          = $title;
-                    $item['title_en']       = $titleEn;
-                    $item['date']           = $date;
-                    $item['description']    = $description;
-                    $item['description_en'] = $descEn;
-                    if ($imageName) {
-                        $item['image'] = $imageName;
-                    }
-                    break;
-                }
+        // Ambil input image_position
+$imagePosition = $this->request->getPost('image_position') ?: 'center';
+
+if ($id) {
+    // Mode Edit
+    foreach ($portfolios as &$item) {
+        if ($item['id'] == $id) {
+            $item['title']          = $title;
+            $item['title_en']       = $titleEn;
+            $item['date']           = $date;
+            $item['description']    = $description;
+            $item['description_en'] = $descEn;
+            $item['image_position'] = $imagePosition; // <-- Tambahkan baris ini
+            if ($imageName) {
+                $item['image'] = $imageName;
             }
-        } else {
-            // Mode Tambah Baru
-            $newId = empty($portfolios) ? 1 : max(array_column($portfolios, 'id')) + 1;
-            $portfolios[] = [
-                'id'             => $newId,
-                'title'          => $title,
-                'title_en'       => $titleEn,
-                'date'           => $date,
-                'description'    => $description,
-                'description_en' => $descEn,
-                'image'          => $imageName,
-                'created_at'     => date('Y-m-d H:i:s')
-            ];
+            break;
         }
+    }
+} else {
+    // Mode Tambah Baru
+    $newId = empty($portfolios) ? 1 : max(array_column($portfolios, 'id')) + 1;
+    $portfolios[] = [
+        'id'             => $newId,
+        'title'          => $title,
+        'title_en'       => $titleEn,
+        'date'           => $date,
+        'description'    => $description,
+        'description_en' => $descEn,
+        'image'          => $imageName,
+        'image_position' => $imagePosition, // <-- Tambahkan baris ini
+        'created_at'     => date('Y-m-d H:i:s')
+    ];
+}
 
         $this->savePortfolios($portfolios);
         return redirect()->to('/admin/portfolio')->with('success', 'Data berita portofolio berhasil disimpan & diterjemahkan!');

@@ -21,10 +21,10 @@
         "assets/img/product/blueprints/sfd-bp-6.jpg"
       ],
       "configurations": {
-        "F": "assets/img/product/config/f.jpg",
-        "V": "assets/img/product/config/v.jpg",
-        "NS": "assets/img/product/config/ns.jpg",
-        "NT": "assets/img/product/config/nt.jpg"
+        "F": "assets/img/product/config/sfd/f.jpg",
+        "V": "assets/img/product/config/sfd/v.jpg",
+        "NS": "assets/img/product/config/sfd/ns.jpg",
+        "NT": "assets/img/product/config/sfd/nt.jpg"
       }
     }
   },
@@ -50,10 +50,10 @@
         "assets/img/product/blueprints/dfd-bp-6.jpg"
       ],
       "configurations": {
-        "F": "assets/img/product/config/f.jpg",
-        "V": "assets/img/product/config/v.jpg",
-        "NS": "assets/img/product/config/ns.jpg",
-        "NT": "assets/img/product/config/nt.jpg"
+        "F": "assets/img/product/config/dfd/f.jpg",
+        "V": "assets/img/product/config/dfd/v.jpg",
+        "NS": "assets/img/product/config/dfd/ns.jpg",
+        "NT": "assets/img/product/config/dfd/nt.jpg"
       }
     }
   },
@@ -79,12 +79,12 @@
         "assets/img/product/blueprints/ssd-bp-6.jpg"
       ],
       "configurations": {
-        "FL": "assets/img/product/config/fl.jpg",
-        "BL": "assets/img/product/config/bl.jpg",
-        "V": "assets/img/product/config/v.jpg",
-        "NS": "assets/img/product/config/ns.jpg",
-        "NT": "assets/img/product/config/nt.jpg",
-        "NH": "assets/img/product/config/nh.jpg"
+        "FL": "assets/img/product/config/ssd/fl.jpg",
+        "BL": "assets/img/product/config/ssd/bl.jpg",
+        "V": "assets/img/product/config/ssd/v.jpg",
+        "NS": "assets/img/product/config/ssd/ns.jpg",
+        "NT": "assets/img/product/config/ssd/nt.jpg",
+        "NH": "assets/img/product/config/ssd/nh.jpg"
       }
     }
   },
@@ -110,10 +110,10 @@
         "assets/img/product/blueprints/sad-bp-6.jpg"
       ],
       "configurations": {
-        "F": "assets/img/product/config/f.jpg",
-        "V": "assets/img/product/config/v.jpg",
-        "NS": "assets/img/product/config/ns.jpg",
-        "NH": "assets/img/product/config/nh.jpg"
+        "F": "assets/img/product/config/sad/f.jpg",
+        "V": "assets/img/product/config/sad/v.jpg",
+        "NS": "assets/img/product/config/sad/ns.jpg",
+        "NH": "assets/img/product/config/sad/nh.jpg"
       }
     }
   },
@@ -159,13 +159,10 @@
       "blueprints": [
         "assets/img/product/blueprints/sld-bp-1.jpg",
         "assets/img/product/blueprints/sld-bp-2.jpg",
-        "assets/img/product/blueprints/sld-bp-3.jpg",
-        "assets/img/product/blueprints/sld-bp-4.jpg",
-        "assets/img/product/blueprints/sld-bp-5.jpg",
-        "assets/img/product/blueprints/sld-bp-6.jpg"
+        "assets/img/product/blueprints/sld-bp-3.jpg"
       ],
       "configurations": {
-        "FL": "assets/img/product/config/fl.jpg"
+           "F": "assets/img/product/config/f.jpg"
       }
     }
   },

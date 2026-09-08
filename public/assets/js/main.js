@@ -13,15 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTexts = document.querySelectorAll('.hero-text');
 
     if (heroVideo) {
+        // Percepat putaran video
+        heroVideo.playbackRate = 1.6;
+
         // Ketika video selesai diputar, munculkan teks & tombol
         heroVideo.addEventListener('ended', () => {
             heroTexts.forEach(el => el.classList.add('show'));
         });
 
-        // Fallback: Jika video gagal play / diblokir browser, tetap tampilkan teks setelah 3 detik
+        // Fallback jika video gagal play / diblokir browser
         setTimeout(() => {
             heroTexts.forEach(el => el.classList.add('show'));
-        }, 8000);
+        }, 3500);
     } else {
         heroTexts.forEach(el => el.classList.add('show'));
     }
@@ -73,28 +76,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ==========================================================================
-// LOGIKA PRODUK: SLIDER HOVER, SCROLL-AUTO-OPEN & HEADER CLICK
+/// ==========================================================================
+// LOGIKA PRODUK: DELAY AUTO-OPEN 5 DETIK SAAT SCROLL
 // ==========================================================================
 
-// 1. Toggle manual jika header produk diklik
+// Map untuk menyimpan ID timer tiap item produk agar bisa di-clear
+const productTimers = new Map();
+
+// 1. Toggle manual jika header produk diklik (langsung buka/tutup tanpa nunggu)
 function toggleProductSlider(headerEl) {
     const productItem = headerEl.closest('.product-item');
     if (productItem) {
+        // Hentikan timer jika user memutuskan klik manual
+        if (productTimers.has(productItem)) {
+            clearTimeout(productTimers.get(productItem));
+            productTimers.delete(productItem);
+        }
         productItem.classList.toggle('is-expanded');
     }
 }
 
-// 2. Fungsi buka slider & scroll mulus ke target
+// 2. Fungsi buka slider & scroll mulus ke target (misal dari navigasi menu)
 function expandAndScrollToProduct(targetId) {
     if (!targetId || !targetId.includes('#prod-')) return;
 
-    // Ambil hash murni jika URL memuat path (misal: /#prod-xxx)
     const cleanId = targetId.substring(targetId.indexOf('#'));
     const targetEl = document.querySelector(cleanId);
     
     if (targetEl) {
-        // Offset tinggi navbar
         const navOffset = 90;
         const elementPosition = targetEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - navOffset;
@@ -104,7 +113,6 @@ function expandAndScrollToProduct(targetId) {
             behavior: 'smooth'
         });
 
-        // Buka slider otomatis
         targetEl.classList.add('is-expanded');
     }
 }
@@ -112,20 +120,31 @@ function expandAndScrollToProduct(targetId) {
 document.addEventListener('DOMContentLoaded', () => {
     const allProducts = document.querySelectorAll('.product-item');
 
-    // A. Interaksi HOVER di Desktop (Buka saat cursor masuk)
-    allProducts.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            item.classList.add('is-expanded');
-        });
-    });
+    // Matikan auto expand mouseenter agar tidak merusak jeda 5 detik
+    // (User tetap bisa klik judul produk jika ingin buka langsung)
 
-    // B. Interaksi SCROLL OTOMATIS (Saat di-scroll masuk layar, otomatis buka)
+    // B. Logika SCROLLDOWN dengan jeda 5 detik
     if ('IntersectionObserver' in window) {
         const productScrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // Terbuka otomatis saat 35% bagian produk terlihat di viewport
+                const item = entry.target;
+
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('is-expanded');
+                    // Hanya set timer jika produk belum terbuka
+                    if (!item.classList.contains('is-expanded') && !productTimers.has(item)) {
+                        const timer = setTimeout(() => {
+                            item.classList.add('is-expanded');
+                            productTimers.delete(item);
+                        }, 5000); // 5000 ms = Jeda 5 detik buat baca judul & tagline
+
+                        productTimers.set(item, timer);
+                    }
+                } else {
+                    // Jika user scroll lewat/keluar sebelum 5 detik, batalkan timer
+                    if (productTimers.has(item)) {
+                        clearTimeout(productTimers.get(item));
+                        productTimers.delete(item);
+                    }
                 }
             });
         }, {
@@ -136,29 +155,55 @@ document.addEventListener('DOMContentLoaded', () => {
         allProducts.forEach(item => productScrollObserver.observe(item));
     }
 
-    // C. Interaksi KLIK dari NAVBAR DESKTOP & MOBILE BOTTOM SHEET
+    // C. Interaksi KLIK dari NAVBAR & MOBILE BOTTOM SHEET
     const productLinks = document.querySelectorAll('a[href*="#prod-"]');
     productLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             if (href && href.includes('#prod-')) {
-                e.preventDefault(); // Cegah loncat instan browser
+                e.preventDefault();
                 expandAndScrollToProduct(href);
 
-                // Update hash di URL tanpa reload
                 const cleanId = href.substring(href.indexOf('#'));
                 history.pushState(null, null, cleanId);
             }
         });
     });
 
-// D. Tangani jika user membuka web dengan Hash URL langsung (Direct Link atau tombol Back)
+    // D. Tangani jika user membuka web dengan Hash URL langsung
     if (window.location.hash && window.location.hash.startsWith('#prod-')) {
-        // Beri jeda lebih lama agar semua aset (gambar, CSS) selesai dimuat sebelum menggulir
         window.addEventListener('load', () => {
             setTimeout(() => {
                 expandAndScrollToProduct(window.location.hash);
-            }, 600); // 600 milidetik memberikan waktu agar layout stabil
+            }, 600);
         });
     }
 });
+
+document.querySelectorAll('.door-frame-box img').forEach(img => {
+    img.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const lightbox = document.getElementById('doorLightbox');
+        const lightboxImg = document.getElementById('doorLightboxImg');
+        lightboxImg.src = img.src;
+        lightbox.classList.add('is-active');
+        document.body.style.overflow = 'hidden'; // Kunci scroll
+    });
+});
+
+function closeDoorLightbox() {
+    const lightbox = document.getElementById('doorLightbox');
+    lightbox.classList.remove('is-active');
+    document.body.style.overflow = '';
+}
+
+function handleProductBack(e, fallbackUrl) {
+    // Jika user datang dari landing page, gunakan browser back agar posisi accordion & scroll tetap terjaga
+    if (document.referrer && document.referrer.includes(window.location.host)) {
+        e.preventDefault();
+        window.history.back();
+    } else {
+        // Jika buka langsung via direct URL, arahkan ke anchor section landing page
+        window.location.href = fallbackUrl;
+    }
+}

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/AboutUs.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/Product.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/Footer.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/buble-pdf.css') ?>">
     <script>
         const theme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-bs-theme', theme);
@@ -47,5 +48,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url('assets/js/main.js') ?>"></script>
     <script src="<?= base_url('assets/js/header.js') ?>"></script>
+    <script src="<?= base_url('assets/js/buble-pdf.js') ?>"></script>
 </body>
 </html>
